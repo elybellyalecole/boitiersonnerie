@@ -140,18 +140,6 @@ _Suivre ces etapes pour installer le programme dans le Raspberry Pi._
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -166,6 +154,18 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- MATERIEL -->
+## Matériel
+
+- Une Raspberry pi 3b+non configurée. Il faudra donc installer sur le disque dur (carte SD) un OS linux.
+
+- Des boutons poussoirs
+
+- Des jumpers (pour la connectique)
+
+- Un boitier à designer (réalisation sous imprimante 3D)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTRIBUTING -->
