@@ -36,7 +36,7 @@
   <h3 align="center">Boitier sonnerie</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Un boitier qui contrôle les différentes sonneries de l'établissement et permet d'actionner les alarmes à l'aide de boutons.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
