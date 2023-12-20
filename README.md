@@ -79,7 +79,7 @@
 ## About The Project
 Projet de sonnerie au LIFE school Lycee Francais de Jakarta
 
-Objectif : Il s'agit de construire un boitier qui contrôle les différentes sonneries de l'établissement et permet d'actionner les alarmes à l'aide de boutons.
+Un projet des élèves de 1ère NSI de LIFE School Jakarta.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
