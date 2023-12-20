@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/elybellyalecole/boitiersonnerie">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="logo-life-school_Plan-de-travail-1-copie.webp" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Boitier sonnerie</h3>
@@ -70,9 +70,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -81,22 +79,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Projet de sonnerie au LIFE school Lycee Francais de Jakarta
 
 Objectif : Il s'agit de construire un boitier qui contrôle les différentes sonneries de l'établissement et permet d'actionner les alarmes à l'aide de boutons.
 
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
