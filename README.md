@@ -101,25 +101,6 @@ Use the `BLANK_README.md` to get started.
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-Voici les necessites pour le projet
-* python3
-  ```sh
-  npm install npm@latest -g
-  ```
-
-* raspberry pi
-
-_Les librairies qui suivent sont incluses dans le fichier requirements.txt (voir etape 2 sur l'installation)_
-
-* pandas
-  ```sh
-  pip install pandas
-  ```
-
-
-
 ### Installation
 
 _Suivre ces etapes pour installer le programme dans le Raspberry Pi._
@@ -166,6 +147,24 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 - Un boitier à designer (réalisation sous imprimante 3D)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Prerequisites
+
+Voici les necessites pour le projet
+* python3
+  ```sh
+  npm install npm@latest -g
+  ```
+
+* raspberry pi
+
+_Les librairies qui suivent sont incluses dans le fichier requirements.txt (voir etape 2 sur l'installation)_
+
+* pandas
+  ```sh
+  pip install pandas
+  ```
+
 
 
 <!-- CONTRIBUTING -->
