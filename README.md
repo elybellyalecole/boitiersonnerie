@@ -64,7 +64,6 @@
     <li>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li></li><a href="#deadline">Deadline</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -148,7 +147,7 @@ _Les librairies qui suivent sont incluses dans le fichier requirements.txt (voir
   ```sh
   pip install pandas
   ```
- ### FURTHERMORE! 
+ ### Nos coontraintes
 - Il y a 3 sonneries : la matinale, celle du primaire et celle du secondaire avec des horaires très précises.
 
 - Ces sonneries ne doivent sonner ni le week-end ni les jours fériés et jamais durant les vacances scolaires.
@@ -165,23 +164,6 @@ _Les librairies qui suivent sont incluses dans le fichier requirements.txt (voir
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
