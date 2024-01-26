@@ -2,7 +2,8 @@
 import time, calendar # Temps, date, calendrier
 from datetime import datetime as dt
 import pandas # Gestion des fichiers CSV
-from pygame import mixer
+from pygame import mixer # Gestion du son
+import RPi.GPIO as GPIO # Gestion du Raspberry Pi
 
 # Variables vers les ficihers de son
 sonPrimaire = "./sons/primaire.wav"
