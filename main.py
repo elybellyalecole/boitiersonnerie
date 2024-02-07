@@ -41,6 +41,7 @@ while True:
     t = check_time()
     d = check_date()
     date = dt.date(int(d[0:4]), int(d[5:7]), int(d[8:10]))
+    print(d)
 
     # Si on est pas en weekend
     if date.weekday() <= 4:
@@ -50,12 +51,19 @@ while True:
             mixer.Channel(1).play(mixer.Sound(sonMatinale), -1, 600000) # Play le son sonMatinale avec un loop de -1 (infini) pour 600000ms (10min)
 
         # Si on est le Vendredi
-
-        # Sonneries primaire/secondaire
-        if (t in horairePrimaire):
-            sonner("PRIMAIRE", sonPrimaire)
-        elif (t in horaireSecondaire):
-            sonner("SECONDAIRE", sonSecondaire)
+        if date.weekday() == 4:
+            # Sonneries primaire/secondaire seulement jusqu'a 11:45 et 12:55 (respectivement)
+            if (t in horairePrimaire[:8]):
+                sonner("PRIMAIRE", sonPrimaire)
+            elif (t in horaireSecondaire[:10]):
+                sonner("SECONDAIRE", sonSecondaire)
+        # Les jours de la semaine
+        else:
+            # Sonneries primaire/secondaire
+            if (t in horairePrimaire):
+                sonner("PRIMAIRE", sonPrimaire)
+            elif (t in horaireSecondaire):
+                sonner("SECONDAIRE", sonSecondaire)
     else:
         print("Weekend, pas de sonnerie")
         
