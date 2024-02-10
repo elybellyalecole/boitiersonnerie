@@ -35,13 +35,44 @@ def sonner(nom, son):
     print(f"SONNERIE {nom} EN MARCHE")
     mixer.Channel(0).play(mixer.Sound(son)) # Play le son
 
+def vacances(dateDebut, dateFin):
+    '''
+    str, str -> bool
+    Fonction qui prend en entrée la date du debut et de la fin des vacances et renvoie True si le jour d'aujourd'hui se situe entre ces 2 dates
+    '''
+    mois = int(check_date()[5:7])
+    moisDebut = int(dateDebut[5:7])
+    moisFin = int(dateFin[5:7])
+    jour = int(check_date()[8:10])
+    jourDebut = int(dateDebut[8:10])
+    jourFin = int(dateFin[8:10])
+    
+    if mois==moisDebut==moisFin:
+        if jour>=jourDebut and jour<=jourFin:
+            return True
+    elif mois==moisDebut:
+        if jour>=jourDebut:
+            return True
+    elif mois==moisFin:
+        if jour<=jourFin:
+            return True
+    elif mois>moisDebut and mois<moisFin:
+        return True
+
+    return False
+
+assert vacances('2024-02-05', '2024-02-12') == True
+assert vacances('2024-01-12', '2024-02-12') == True
+assert vacances('2023-01-12', '2024-02-12') == True
+assert vacances('2024-05-12', '2024-06-12') == False
+assert vacances('2024-01-10', '2024-03-10') == True
+    
 
 while True:
     # Check le temps et le mettre dans la variable t
     t = check_time()
     d = check_date()
     date = dt.date(int(d[0:4]), int(d[5:7]), int(d[8:10]))
-    print(d)
 
     # Si on est pas en weekend
     if date.weekday() <= 4:
