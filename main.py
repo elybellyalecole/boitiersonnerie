@@ -46,31 +46,32 @@ def sonner(nom, son):
     print(f"SONNERIE {nom} EN MARCHE")
     mixer.Channel(0).play(mixer.Sound(son)) # Play le son
 
-def check_vacances(dateDebut, dateFin):
+def check_vacances():
     '''
     str, str -> bool
     Fonction qui prend en entrée la date du debut et de la fin des vacances et renvoie True si le jour d'aujourd'hui se situe entre ces 2 dates
     '''
-    mois = int(check_date()[5:7])
-    moisDebut = int(dateDebut[5:7])
-    moisFin = int(dateFin[5:7])
-    jour = int(check_date()[8:10])
-    jourDebut = int(dateDebut[8:10])
-    jourFin = int(dateFin[8:10])
-    
-    if mois==moisDebut==moisFin:
-        if jour>=jourDebut and jour<=jourFin:
-            return True
-    elif mois==moisDebut:
-        if jour>=jourDebut:
-            return True
-    elif mois==moisFin:
-        if jour<=jourFin:
-            return True
-    elif mois>moisDebut and mois<moisFin:
-        return True
-
-    return False
+    clesvacances = False
+    for i in range(len(vacances)):
+        mois = int(check_date()[5:7])
+        moisDebut = int(vacances[i][0][5:7])
+        moisFin = int(vacances[i][1][5:7])
+        jour = int(check_date()[8:10])
+        jourDebut = int(vacances[i][0][8:10])
+        jourFin = int(vacances[i][1][8:10])
+        
+        if mois==moisDebut==moisFin:
+            if jour>=jourDebut and jour<=jourFin:
+                clesvacances = True
+        elif mois==moisDebut:
+            if jour>=jourDebut:
+                clesvacances = True
+        elif mois==moisFin:
+            if jour<=jourFin:
+                clesvacances = True
+        elif mois>moisDebut and mois<moisFin:
+            clesvacances = True
+    return clesvacances
 
 assert check_vacances('2024-02-05', '2024-02-12') == True
 assert check_vacances('2024-01-12', '2024-02-12') == True
