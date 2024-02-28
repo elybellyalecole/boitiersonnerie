@@ -46,7 +46,7 @@ def sonner(nom, son):
     print(f"SONNERIE {nom} EN MARCHE")
     mixer.Channel(0).play(mixer.Sound(son)) # Play le son
 
-def check_vacances():
+def check_vacances_ferie():
     '''
     str, str -> bool
     Fonction qui prend en entrée la date du debut et de la fin des vacances et renvoie True si le jour d'aujourd'hui se situe entre ces 2 dates
@@ -73,12 +73,6 @@ def check_vacances():
             clesvacances = True
     return clesvacances
 
-assert check_vacances('2024-02-05', '2024-02-12') == True
-assert check_vacances('2024-01-12', '2024-02-12') == True
-assert check_vacances('2023-01-12', '2024-02-12') == True
-assert check_vacances('2024-05-12', '2024-06-12') == False
-assert check_vacances('2024-01-10', '2024-03-10') == True
-    
 
 while True:
     # Check le temps et le mettre dans la variable t
@@ -86,12 +80,12 @@ while True:
     d = check_date()
     date = dt.date(int(d[0:4]), int(d[5:7]), int(d[8:10]))
 
-    # Check si on est en vacances
-    if check_vacances():
-        # Si on est en vacances
+    # Check si on est en vacances ou un jour ferie
+    if check_vacances_ferie():
+        # Si on est en vacances ou un jour ferie
         print("EN VACANCES, PAS DE SONNERIE")
     else:
-        #Si on est pas en vacances
+        #Si on est pas ni en vacances ni dans un jour ferie
         # Check si on est en weekday
         if date.weekday() <= 4:
             # Musique matinale 7:35:00 - 7:45:00
