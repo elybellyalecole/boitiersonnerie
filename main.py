@@ -22,6 +22,8 @@ horaireSecondaire = dataHoraires['SECONDAIRE'].tolist()
 sonPrimaire = "./sons/primaire.wav"
 sonSecondaire = "./sons/secondaire.wav"
 sonMatinale = "./sons/matinale.wav"
+sonSeisme = "./sons/earthquake.mp3"
+sonIntrusion = "./sons/intrusion.mp3"
 
 
 # Variables des jours ou la sonnerie ne sonne pas (vacances + jours feries + weekend)
@@ -80,33 +82,58 @@ while True:
     d = check_date()
     date = dt.date(int(d[0:4]), int(d[5:7]), int(d[8:10]))
 
-    # Check si on est en vacances ou un jour ferie
-    if check_vacances_ferie():
-        # Si on est en vacances ou un jour ferie
-        print("EN VACANCES, PAS DE SONNERIE")
-    else:
-        #Si on est pas ni en vacances ni dans un jour ferie
-        # Check si on est en weekday
-        if date.weekday() <= 4:
-            # Musique matinale 7:35:00 - 7:45:00
-            if (t=="07:35:00.0"):
-                print("MUSIQUE MATINALE EN MARCHE")
-                mixer.Channel(1).play(mixer.Sound(sonMatinale), -1, 600000) # Play le son sonMatinale avec un loop de -1 (infini) pour 600000ms (10min)
-
-            # Check si on est le Vendredi
-            if date.weekday() == 4:
-                # Sonneries primaire/secondaire seulement jusqu'a 11:45 et 12:55 (respectivement)
-                if (t in horairePrimaire[:8]):
-                    sonner("PRIMAIRE", sonPrimaire)
-                elif (t in horaireSecondaire[:10]):
-                    sonner("SECONDAIRE", sonSecondaire)
-            else:
-                # Sonneries primaire/secondaire
-                if (t in horairePrimaire):
-                    sonner("PRIMAIRE", sonPrimaire)
-                elif (t in horaireSecondaire):
-                    sonner("SECONDAIRE", sonSecondaire)
-        # Si on est en weekend
+    if check_alarme_s==False and check_alarme_i==False:
+        # Check si on est en vacances ou un jour ferie
+        if check_vacances_ferie():
+            # Si on est en vacances ou un jour ferie
+            print("EN VACANCES, PAS DE SONNERIE")
         else:
-            print("EN WEEKEND, PAS DE SONNERIE")
-        
+            #Si on est pas ni en vacances ni dans un jour ferie
+            # Check si on est en weekday
+            if date.weekday() <= 4:
+                # Musique matinale 7:35:00 - 7:45:00
+                if (t=="07:35:00.0"):
+                    print("MUSIQUE MATINALE EN MARCHE")
+                    mixer.Channel(1).play(mixer.Sound(sonMatinale), -1, 600000) # Play le son sonMatinale avec un loop de -1 (infini) pour 600000ms (10min)
+
+                # Check si on est le Vendredi
+                if date.weekday() == 4:
+                    # Sonneries primaire/secondaire seulement jusqu'a 11:45 et 12:55 (respectivement)
+                    if (t in horairePrimaire[:8]):
+                        sonner("PRIMAIRE", sonPrimaire)
+                    elif (t in horaireSecondaire[:10]):
+                        sonner("SECONDAIRE", sonSecondaire)
+                else:
+                    # Sonneries primaire/secondaire
+                    if (t in horairePrimaire):
+                        sonner("PRIMAIRE", sonPrimaire)
+                    elif (t in horaireSecondaire):
+                        sonner("SECONDAIRE", sonSecondaire)
+            # Si on est en weekend
+            else:
+                print("EN WEEKEND, PAS DE SONNERIE")
+    
+    # Alertes
+    check_alarme_s=False    #alarme seisme
+    if (True):
+        if check_alarme_s==False:
+            mixer.Channel(0).stop()
+            mixer.Channel(1).stop()
+            mixer.Channel(2).play(mixer.Sound(sonSeisme), -1, 600000)
+            check_alarme_s=True
+        else:
+            mixer.Channel(2).stop()
+            check_alarme_s=False
+
+    check_alarme_i=False    #alarme intrusion
+    if (True):
+        if check_alarme_i==False:
+            mixer.Channel(0).stop()
+            mixer.Channel(1).stop()
+            mixer.Channel(2).play(mixer.Sound(sonIntrusion), -1, 600000)
+            check_alarme_i=True
+        else:
+            mixer.Channel(2).stop()
+            check_alarme_i=False
+            
+    
