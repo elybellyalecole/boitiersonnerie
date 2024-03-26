@@ -1,22 +1,32 @@
 # Importation des librairies
 import time, calendar # Temps, date, calendrier
 import datetime as dt
-import pandas as pd # Gestion des fichiers CSV
+import csv # Gestion des fichiers CSV
 from pygame import mixer # Gestion du son
 # import RPi.GPIO as GPIO # Gestion du Raspberry Pi
 
 # Lire le fichier CSV
-dataVacances = pd.read_csv("data/vacances.csv")
-dataHoraires = pd.read_csv("data/horaires.csv")
+fichierDataVacances = open("data/vacances.csv", "r")
+tableDataVacances = csv.DictReader(fichierDataVacances, delimiter=",")
+dataVacances = [ligne for ligne in tableDataVacances]
+fichierDataHoraires = open("data/horaires.csv", "r")
+tableDataHoraires = csv.DictReader(fichierDataHoraires, delimiter=",")
+dataHoraires = [dict(ligne) for ligne in tableDataHoraires]
 
 # Variables des vacances + sonneries
 vacances = []
 for i in range(len(dataVacances)):
-    vacances.append((dataVacances['DATEDEBUT'][i], dataVacances['DATEFIN'][i]))
-print(vacances)
-horairePrimaire = dataHoraires['PRIMAIRE'].tolist()
-horaireSecondaire = dataHoraires['SECONDAIRE'].tolist()
+    vacances.append((dataVacances[i]['DATEDEBUT'], dataVacances[i]['DATEFIN']))
 
+horairePrimaire=[]
+horaireSecondaire=[]
+for i in range(len(dataHoraires)):
+    horairePrimaire.append(dataHoraires[i]['PRIMAIRE'])
+    horaireSecondaire.append(dataHoraires[i]['SECONDAIRE'])
+
+# Variables alarmes
+check_alarme_s = False #alarme seisme
+check_alarme_i = False #alarme intrusion
 
 # Variables vers les ficihers de son
 sonPrimaire = "./sons/primaire.wav"
@@ -24,10 +34,6 @@ sonSecondaire = "./sons/secondaire.wav"
 sonMatinale = "./sons/matinale.wav"
 sonSeisme = "./sons/earthquake.mp3"
 sonIntrusion = "./sons/intrusion.mp3"
-
-
-# Variables des jours ou la sonnerie ne sonne pas (vacances + jours feries + weekend)
-joursnonsonne = []
 
 # Initialiser la module de mixer de pygame pour le son
 mixer.init()
@@ -114,8 +120,7 @@ while True:
                 print("EN WEEKEND, PAS DE SONNERIE")
     
     # Alertes
-    check_alarme_s=False    #alarme seisme
-    if (True):
+    if (True): # Bouton seisme clique
         if check_alarme_s==False:
             mixer.Channel(0).stop()
             mixer.Channel(1).stop()
@@ -125,8 +130,7 @@ while True:
             mixer.Channel(2).stop()
             check_alarme_s=False
 
-    check_alarme_i=False    #alarme intrusion
-    if (True):
+    if (True): # Bouton intrusion clique
         if check_alarme_i==False:
             mixer.Channel(0).stop()
             mixer.Channel(1).stop()
