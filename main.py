@@ -4,6 +4,7 @@ import datetime as dt
 import csv # Gestion des fichiers CSV
 from pygame import mixer # Gestion du son
 # import RPi.GPIO as GPIO # Gestion du Raspberry Pi
+import keyboard
 
 # Lire le fichier CSV
 fichierDataVacances = open("data/vacances.csv", "r")
@@ -120,7 +121,7 @@ while True:
                 print("EN WEEKEND, PAS DE SONNERIE")
     
     # Alertes
-    if (True): # Bouton seisme clique
+    if (keyboard.read_key() == "s"): # Bouton seisme clique (changer avec bouton au lieu de keyboard)
         if check_alarme_s==False:
             mixer.Channel(0).stop()
             mixer.Channel(1).stop()
@@ -130,7 +131,7 @@ while True:
             mixer.Channel(2).stop()
             check_alarme_s=False
 
-    if (True): # Bouton intrusion clique
+    if (keyboard.read_key() == "i"): # Bouton intrusion clique (changer avec bouton au lieu de keyboard)
         if check_alarme_i==False:
             mixer.Channel(0).stop()
             mixer.Channel(1).stop()
