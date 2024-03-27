@@ -3,8 +3,9 @@ import time, calendar # Temps, date, calendrier
 import datetime as dt
 import csv # Gestion des fichiers CSV
 from pygame import mixer # Gestion du son
-# import RPi.GPIO as GPIO # Gestion du Raspberry Pi
-import keyboard
+from gpiozero import Button
+button_s=Button(2)
+button_i=Button(3)
 
 # Lire le fichier CSV
 fichierDataVacances = open("data/vacances.csv", "r")
@@ -30,14 +31,17 @@ check_alarme_s = False #alarme seisme
 check_alarme_i = False #alarme intrusion
 
 # Variables vers les ficihers de son
-sonPrimaire = "./sons/primaire.wav"
-sonSecondaire = "./sons/secondaire.wav"
-sonMatinale = "./sons/matinale.wav"
-sonSeisme = "./sons/earthquake.mp3"
-sonIntrusion = "./sons/intrusion.mp3"
+sonPrimaire = "sons/primaire.wav"
+sonSecondaire = "sons/secondaire.wav"
+sonMatinale = "sons/matinale.wav"
+sonSeisme = "sons/earthquake.mp3"
+sonIntrusion = "sons/intrusion.mp3"
 
 # Initialiser la module de mixer de pygame pour le son
 mixer.init()
+mixer.Channel(0)
+mixer.Channel(1)
+mixer.Channel(2)
 
 # Fonctions
 def check_time():
@@ -121,21 +125,21 @@ while True:
                 print("EN WEEKEND, PAS DE SONNERIE")
     
     # Alertes
-    if (keyboard.read_key() == "s"): # Bouton seisme clique (changer avec bouton au lieu de keyboard)
+    if (button_s.is_pressed): # Bouton seisme clique (changer avec bouton au lieu de keyboard)
         if check_alarme_s==False:
             mixer.Channel(0).stop()
             mixer.Channel(1).stop()
-            mixer.Channel(2).play(mixer.Sound(sonSeisme), -1, 600000)
+            mixer.Channel(2).play(mixer.Sound(sonSeisme), -1)
             check_alarme_s=True
         else:
             mixer.Channel(2).stop()
             check_alarme_s=False
 
-    if (keyboard.read_key() == "i"): # Bouton intrusion clique (changer avec bouton au lieu de keyboard)
+    if (button_i.is_pressed): # Bouton intrusion clique (changer avec bouton au lieu de keyboard)
         if check_alarme_i==False:
             mixer.Channel(0).stop()
             mixer.Channel(1).stop()
-            mixer.Channel(2).play(mixer.Sound(sonIntrusion), -1, 600000)
+            mixer.Channel(2).play(mixer.Sound(sonIntrusion), -1)
             check_alarme_i=True
         else:
             mixer.Channel(2).stop()
