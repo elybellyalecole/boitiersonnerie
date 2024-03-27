@@ -4,8 +4,12 @@ import datetime as dt
 import csv # Gestion des fichiers CSV
 from pygame import mixer # Gestion du son
 from gpiozero import Button
+import tm1637
+
 button_s=Button(2)
 button_i=Button(3)
+
+tm = tm1637.TM1637(clk=14, dio=4)
 
 # Lire le fichier CSV
 fichierDataVacances = open("data/vacances.csv", "r")
@@ -50,7 +54,7 @@ def check_time():
     return current_time
 
 def check_date():
-    ''' Fonction qui renvoie le temps actuel en string de format H:M:S '''
+    ''' Fonction qui renvoie le temps actuel en string de format J:M:A '''
     current_date = dt.datetime.now().strftime("%Y-%m-%d")
     return current_date
 
@@ -145,4 +149,4 @@ while True:
             mixer.Channel(2).stop()
             check_alarme_i=False
             
-    
+    tm.numbers(int(t[:2]),int(t[3:5]))
